@@ -1,4 +1,4 @@
-name: Build OpenMX in ubuntu-22.04
+name: Build OpenMX in Ubuntu-22.04
 
 on:
   schedule:
