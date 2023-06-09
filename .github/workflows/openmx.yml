@@ -1,0 +1,26 @@
+name: Build OpenMX in ubuntu-22.04
+
+on:
+  schedule:
+    - cron:  '0 2 ? * SUN'
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      
+      - name: R ppa
+        run: wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-22.04/main/src/r-ppa.sh | sudo bash
+        
+      - name: R install
+        run: wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-22.04/main/src/r-install.sh | sudo bash
+ 
+      - name: OpenMx build
+        run: sudo Rscript ${PWD}/src/openmx-npsol.R
