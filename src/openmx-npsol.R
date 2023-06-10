@@ -56,3 +56,6 @@ for(pkg in toInstall) {
 
 # Install OpenMx from the OpenMx site
 install.packages(pkgs=c("OpenMx"), contriburl=contrib.url(repos, type=type), dependencies=NA, verbose=TRUE)
+
+# Demo
+demo("BivariateCorrelation", package = "OpenMx")
