@@ -20,3 +20,5 @@ Rscript -e "                                           \
   );                                                   \
   demo('BivariateCorrelation', package = 'OpenMx')     \
 "
+
+echo -e "\nInstall OpenMx, done!"
