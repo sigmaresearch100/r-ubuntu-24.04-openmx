@@ -51,11 +51,14 @@ if(interactive() &&
 
 # Install dependencies from default repositories (usually CRAN)
 for(pkg in toInstall) {
-    install.packages(pkg)
+    install.packages(
+      pkg,
+      repos = c(REPO_NAME = "https://packagemanager.rstudio.com/all/__linux__/jammy/latest") # added for jammy
+    )
 }
 
 # Install OpenMx from the OpenMx site
 install.packages(pkgs=c("OpenMx"), contriburl=contrib.url(repos, type=type), dependencies=NA, verbose=TRUE)
 
 # Demo
-demo("BivariateCorrelation", package = "OpenMx")
+demo("BivariateCorrelation", package = "OpenMx") # added to check
