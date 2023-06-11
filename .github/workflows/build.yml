@@ -11,25 +11,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    env:
+      UBUNTU_VERSION: jammy
 
     steps:
-      - name: Check out repository
+      -
+        name: Check out repository
         uses: actions/checkout@v3
-
-      - name: R ppa
-        run: wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-22.04/main/src/r-ppa.sh | sudo bash
-
-      - name: R install
-        run: wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-22.04/main/src/r-install.sh | sudo bash
-
-      - name: remotes and rprojroot
+      -
+        name: ppa
+        run: wget https://raw.githubusercontent.com/rocker-org/rocker-versioned2/master/scripts/install_R_ppa.sh | sudo bash
+      -
+        name: install
+        run: wget https://raw.githubusercontent.com/rocker-org/rocker-versioned2/master/scripts/install_R_source.sh | sudo bash
+      -
+        name: remotes and rprojroot
         run: sudo Rscript ${PWD}/src/000.R
 
-      - name: dependencies ubuntu
+      -
+        name: dependencies ubuntu
         run: sudo bash ${PWD}/src/dep.sh
 
-      - name: R dependencies
+      -
+        name: R dependencies
         run: sudo Rscript ${PWD}/src/dep.R
 
-      - name: build package
+      -
+        name: build package
         run: sudo bash ${PWD}/src/build.sh
