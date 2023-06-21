@@ -1,4 +1,4 @@
-name: Build in Ubuntu-22.04 (Runner)
+name: Build in Ubuntu-22.04 (Docker)
 
 on:
   schedule:
@@ -12,6 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:22.04
 
     steps:
       -
@@ -19,13 +21,13 @@ jobs:
         uses: actions/checkout@v3
       -
         name: remotes and rprojroot
-        run: sudo R ${PWD}/tools/000.R
+        run: R ${PWD}/tools/000.R
       -
         name: system dependencies
-        run: sudo bash ${PWD}/tools/dep.sh
+        run: bash ${PWD}/tools/dep.sh
       -
         name: R dependencies
-        run: sudo R ${PWD}/tools/dep.R
+        run: R ${PWD}/tools/dep.R
       -
         name: build package
-        run: sudo bash ${PWD}/tools/build.sh
+        run: bash ${PWD}/tools/build.sh
