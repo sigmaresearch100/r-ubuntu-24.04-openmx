@@ -22,17 +22,18 @@ jobs:
       -
         name: Install R
         run: |
+          apt-get install -y wget
           wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-22.04/main/build.sh
           bash build.sh
       -
         name: Install remotes and rprojroot
-        run: R ${PWD}/tools/000.R
+        run: Rscript ${PWD}/tools/000.R
       -
         name: Install system dependencies
         run: bash ${PWD}/tools/dep.sh
       -
         name: Install R dependencies
-        run: R ${PWD}/tools/dep.R
+        run: Rscript ${PWD}/tools/dep.R
       -
         name: Build package
         run: bash ${PWD}/tools/build.sh
