@@ -22,7 +22,7 @@ jobs:
       -
         name: Install R
         run: |
-          apt-get install -y wget
+          apt-get update && apt-get install -y wget
           wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-22.04/main/build.sh
           bash build.sh
       -
