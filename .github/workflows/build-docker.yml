@@ -20,14 +20,19 @@ jobs:
         name: Check out repository
         uses: actions/checkout@v3
       -
-        name: remotes and rprojroot
+        name: Install R
+        run: |
+          wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-22.04/main/build.sh
+          bash build.sh
+      -
+        name: Install remotes and rprojroot
         run: R ${PWD}/tools/000.R
       -
-        name: system dependencies
+        name: Install system dependencies
         run: bash ${PWD}/tools/dep.sh
       -
-        name: R dependencies
+        name: Install R dependencies
         run: R ${PWD}/tools/dep.R
       -
-        name: build package
+        name: Build package
         run: bash ${PWD}/tools/build.sh
