@@ -1,4 +1,4 @@
-name: Build in Ubuntu-22.04 (Runner)
+name: Build in Ubuntu-24.04 (Runner)
 
 on:
   schedule:
@@ -16,7 +16,7 @@ jobs:
     steps:
       -
         name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
       -
         name: remotes and rprojroot
         run: sudo Rscript ${PWD}/tools/000.R

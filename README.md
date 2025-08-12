@@ -1,3 +1,3 @@
-# r-ubuntu-22.04-openmx
+# r-ubuntu-24.04-openmx
 
-Notes on installing OpenMx in Ubuntu 22.04.
+Notes on installing OpenMx in Ubuntu 24.04.

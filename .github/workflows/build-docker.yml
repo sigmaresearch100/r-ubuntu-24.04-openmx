@@ -1,4 +1,4 @@
-name: Build in Ubuntu-22.04 (Docker)
+name: Build in Ubuntu-24.04 (Docker)
 
 on:
   schedule:
@@ -13,17 +13,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:22.04
+      image: ubuntu:24.04
 
     steps:
       -
         name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
       -
         name: Install R
         run: |
           apt-get update && apt-get install -y wget
-          wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-22.04/main/tools/build.sh
+          wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-24.04/main/tools/build.sh
           bash build.sh
       -
         name: Install remotes and rprojroot
