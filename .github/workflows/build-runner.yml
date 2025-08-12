@@ -18,6 +18,12 @@ jobs:
         name: Check out repository
         uses: actions/checkout@v5
       -
+        name: Install R
+        run: |
+          apt-get update && apt-get install -y wget
+          wget https://raw.githubusercontent.com/sigmaresearch100/r-ubuntu-24.04/main/tools/build.sh
+          bash build.sh
+      -
         name: remotes and rprojroot
         run: sudo Rscript ${PWD}/tools/000.R
       -
